@@ -15,13 +15,13 @@ class WeatherWidget extends StatelessWidget {
         children: [
           Text(
             '${weather.city}, ${weather.country}',
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: const TextStyle(fontSize: 30, color: Colors.white),
             ),
           const SizedBox(height: 10),
-          Text('Temperature: ${(weather.temperature - 273.15).toStringAsFixed(2)}°C'),
-          Text('Weather condition: ${weather.description}'),
-          Text('Latitude: ${weather.latitude}'),
-          Text('Longitude: ${weather.longitude}'),
+          Text('Temperature: ${(weather.temperature - 273.15).toStringAsFixed(2)}°C', style: const TextStyle(color: Colors.white)),
+          Text('Weather condition: ${weather.description}', style: const TextStyle(color: Colors.white)),
+          Text('Latitude: ${weather.latitude}', style: const TextStyle(color: Colors.white)),
+          Text('Longitude: ${weather.longitude}', style: const TextStyle(color: Colors.white)),
           const SizedBox(height: 10),
           Image.network(
             'https://openweathermap.org/img/wn/${weather.icon}@2x.png',

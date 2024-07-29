@@ -11,12 +11,15 @@ class WeatherScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent, 
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
-        title: Text('Weather in $city'),
-        backgroundColor: Colors
-            .transparent, 
         elevation: 0,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'Weather in $city',
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.transparent,
       ),
       body: FutureBuilder<Weather?>(
         future: WeatherService().fetchWeather(city),
