@@ -10,76 +10,92 @@ class WeatherWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.1),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 20,
-              spreadRadius: 5,
-            ),
-          ],
-        ),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.center, // Alinea verticalmente al centro
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // Alinea horizontalmente al centro
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center, 
           children: [
             Text(
               '${weather.city}, ${weather.country}',
               style: const TextStyle(
                 fontSize: 30,
-                color: Color(0xFF4a4be3),
+                color: Color(0xFF4a4ce6), 
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
-              '${(weather.temperature - 273.15).toStringAsFixed(0)}°C',
+              '${(weather.temperature - 273.15).toStringAsFixed(0)}°',
               style: const TextStyle(
-                fontSize: 80,
-                color: Color(0xFF4a4be3),
+                fontSize: 120,
+                color: Color(0xFF4a4ce6),
                 fontWeight: FontWeight.bold,
               ),
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 10),
             Text(
               weather.description,
               style: const TextStyle(
-                color: Color(0xFF4a4be3),
+                color: Color(0xFF4a4ce6),
                 fontSize: 20,
               ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Lat: ${weather.latitude}',
-                  style: const TextStyle(
-                    color: Color(0xFF4a4be3),
-                    fontSize: 16,
-                  ),
-                ),
-                const SizedBox(width: 10),
-                Text(
-                  'Lon: ${weather.longitude}',
-                  style: const TextStyle(
-                    color: Color(0xFF4a4be3),
-                    fontSize: 16,
-                  ),
-                ),
-              ],
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
             Image.network(
               'https://openweathermap.org/img/wn/${weather.icon}@4x.png',
               fit: BoxFit.contain,
-              height: 150,
-              width: 150,
+              height: 100,
+              width: 100,
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    const Icon(Icons.speed, color: Color(0xFF4a4ce6)),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${weather.windSpeed} m/s',
+                      style: const TextStyle(color: Color(0xFF4a4ce6)),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Icon(Icons.water_drop, color: Color(0xFF4a4ce6)),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${weather.humidity}%',
+                      style: const TextStyle(color: Color(0xFF4a4ce6)),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Icon(Icons.compress, color: Color(0xFF4a4ce6)),
+                    const SizedBox(height: 5),
+                    Text(
+                      '${weather.pressure} hPa',
+                      style: const TextStyle(color: Color(0xFF4a4ce6)),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Latitude: ${weather.latitude}',
+              style: const TextStyle(color: Color(0xFF4a4ce6), fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              'Longitude: ${weather.longitude}',
+              style: const TextStyle(color: Color(0xFF4a4ce6), fontSize: 16),
+              textAlign: TextAlign.center,
             ),
           ],
         ),
