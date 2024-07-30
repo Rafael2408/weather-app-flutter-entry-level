@@ -9,30 +9,81 @@ class WeatherWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // Alinea verticalmente al centro
-        crossAxisAlignment: CrossAxisAlignment.center, // Alinea horizontalmente al centro
-        children: [
-          Text(
-            '${weather.city}, ${weather.country}',
-            style: const TextStyle(fontSize: 30, color: Colors.white),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.1),
+              blurRadius: 20,
+              spreadRadius: 5,
             ),
-          const SizedBox(height: 10),
-          Text('Temperature: ${(weather.temperature - 273.15).toStringAsFixed(2)}°C', style: const TextStyle(color: Colors.white)),
-          Text('Weather condition: ${weather.description}', style: const TextStyle(color: Colors.white)),
-          Text('Latitude: ${weather.latitude}', style: const TextStyle(color: Colors.white)),
-          Text('Longitude: ${weather.longitude}', style: const TextStyle(color: Colors.white)),
-          const SizedBox(height: 10),
-          Image.network(
-            'https://openweathermap.org/img/wn/${weather.icon}@2x.png',
-            fit: BoxFit.contain,
-            height: 200,
-            width: 200,
-          ),
-        ],
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment:
+              MainAxisAlignment.center, // Alinea verticalmente al centro
+          crossAxisAlignment:
+              CrossAxisAlignment.center, // Alinea horizontalmente al centro
+          children: [
+            Text(
+              '${weather.city}, ${weather.country}',
+              style: const TextStyle(
+                fontSize: 30,
+                color: Color(0xFF4a4be3),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              '${(weather.temperature - 273.15).toStringAsFixed(0)}°C',
+              style: const TextStyle(
+                fontSize: 80,
+                color: Color(0xFF4a4be3),
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Text(
+              weather.description,
+              style: const TextStyle(
+                color: Color(0xFF4a4be3),
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Lat: ${weather.latitude}',
+                  style: const TextStyle(
+                    color: Color(0xFF4a4be3),
+                    fontSize: 16,
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  'Lon: ${weather.longitude}',
+                  style: const TextStyle(
+                    color: Color(0xFF4a4be3),
+                    fontSize: 16,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Image.network(
+              'https://openweathermap.org/img/wn/${weather.icon}@4x.png',
+              fit: BoxFit.contain,
+              height: 150,
+              width: 150,
+            ),
+          ],
+        ),
       ),
     );
-
-
   }
 }
